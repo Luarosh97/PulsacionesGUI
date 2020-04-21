@@ -12,11 +12,12 @@ namespace DAL
     {
 
         private string ruta = @"personas.txt";
-        public List<Persona> personas;
+        public IList<Persona> personas;
 
         public PersonaRepository(){
-            
             personas = new List<Persona>();
+
+
 
 }
         public void Guardar(Persona persona) {
@@ -29,24 +30,22 @@ namespace DAL
 
 
         }
-        public List<Persona> Consultar() {
+        public IList<Persona> Consultar() {
             personas.Clear();
             FileStream fileStream = new FileStream(ruta, FileMode.OpenOrCreate);
             StreamReader lector = new StreamReader(fileStream);
             string linea = string.Empty;
-            while ((linea = lector.ReadLine()) != null) {
+            while ((linea = lector.ReadLine()) != null)
+            {
                Persona persona = MapearPersona(linea);
-                personas.Add(persona);
+             personas.Add(persona);
 
             }
-            fileStream.Close();
             lector.Close();
+            fileStream.Close();
             return personas;
-
-
-        }
-
-        public Persona MapearPersona(string linea)
+}
+public Persona MapearPersona(string linea)
         {
             Persona persona = new Persona();
             string[] datos = linea.Split(';');
@@ -54,8 +53,7 @@ namespace DAL
             persona.Nombre = datos[1];
             persona.Edad = int.Parse(datos[2]);
             persona.Sexo = datos[3];
-            persona.Pulsacion = Convert.ToDecimal(datos[4]);
-            personas.Add(persona);
+            persona.Calcularpulsaciones();
             return persona;
 
         }
@@ -111,6 +109,29 @@ namespace DAL
             return null;
         }
 
+        public int TotalizarPersonas()
+        {
+            return personas.Count();
+        }
+
+        public int TotalizarMujeres()
+        {
+            return personas.Where(p => p.Sexo.Equals("F")).Count();
+        }
+
+        public int TotalizarHombres()
+        {
+            return personas.Where(p => p.Sexo.Equals("M")).Count();
+        }
+        
+        public IList<Persona> ListaHombres()
+        {
+            return personas.Where(p => p.Sexo.Equals("M")).ToList() ;
+        }
+        public IList<Persona> Listamujeres()
+        {
+            return personas.Where(p => p.Sexo.Equals("F")).ToList();
+        }
 
 
 

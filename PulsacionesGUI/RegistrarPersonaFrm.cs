@@ -58,7 +58,7 @@ namespace PulsacionesGUI
 
             if (identificacion != "")
             {
-                Persona persona = personaservice.Buscar(identificacion);
+                Persona persona = PersonaService.Buscar(identificacion);
 
                 if (persona != null)
                 {
@@ -86,7 +86,7 @@ namespace PulsacionesGUI
             string identificacion = IdentificacionTxt.Text;
             if (identificacion != "")
             {
-                Persona persona = personaservice.Buscar(identificacion);
+                Persona persona = PersonaService.Buscar(identificacion);
                 if (persona != null)
                 {
                     identificacion = IdentificacionTxt.Text;

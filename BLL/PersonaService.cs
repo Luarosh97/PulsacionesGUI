@@ -10,11 +10,11 @@ namespace BLL
 {
     public class PersonaService
     {
-        private PersonaRepository personaRepositorio;
-
+       public static PersonaRepository personaRepositorio = new PersonaRepository();
+       
         public PersonaService()
         {
-            personaRepositorio = new PersonaRepository();
+           
         }
 
 
@@ -79,63 +79,69 @@ namespace BLL
             }
         }
 
-        public void ImprimirPersonas(List<Persona> persona)
-        {
-            Console.WriteLine("{0,15}{1,17}{2,16}{3,12}{4,16}{5,17}", "Identificacion", "Nombre_persona", "Edad", "Nombre", "PulsacionCalculada");
-            Console.WriteLine("---------------------------------------------------------------------------------------------");
-            Console.WriteLine("---------------------------------------------------------------------------------------------");
 
-            foreach (var item in persona)
-            {
-                Console.WriteLine("{0,15}{1,17}{2,16}{3,12}{4,16}{5,17}", item.Identificacion, item.Nombre, item.Edad, item.Sexo, item.Pulsacion);
-            }
-            }
 
-            public Persona Buscar(string identificacion)
+        public static Persona Buscar(string identificacion)
         {
+
+            return personaRepositorio.Buscar(identificacion);
+        }
+
+        public RespuestaConsulta Consultar()
+        {
+            RespuestaConsulta respuesta = new RespuestaConsulta();
             try
             {
-                Persona persona= personaRepositorio.Buscar(identificacion);
-                if (persona == null)
+                respuesta.Error = false;
+                respuesta.Personas = personaRepositorio.Consultar();
+                if (respuesta.Personas != null)
                 {
-                    Console.WriteLine($"La identificacion {identificacion} no se encuentra registrada");
-                }
-                return persona;
-            }
-            catch (Exception E)
-            {
-                Console.WriteLine("Error de lectura " + E.Message);
-                return null;
-            }
-}
-        public void Consultar()
-        {
-            try
-            {
-                List<Persona>personas = personaRepositorio.Consultar();
-                if (personas != null)
-                {
-                    ImprimirPersonas(personas);
+                    respuesta.Mensaje = "Se Consulta la Informacion de personas";
                 }
                 else
                 {
-                    Console.WriteLine("No existen personas registradas en la lista");
+                    respuesta.Mensaje = "No existen Datos para Consultar";
                 }
+
             }
-            catch (Exception E)
+            catch (Exception e)
             {
-                Console.WriteLine("Error de lectura " + E.Message);
+                respuesta.Error = true;
+                respuesta.Mensaje = $"Erro en datos: " + e.Message;
             }
+            return respuesta;
+
+        }
+
+        public  int TotalizarPersonas()
+        {
+            return personaRepositorio.TotalizarPersonas();
+        }
+
+        public  int TotalizarMujeres()
+        {
+            return personaRepositorio.TotalizarMujeres();
+        }
+
+        public  int TotalizarHombres()
+        {
+            return personaRepositorio.TotalizarHombres();
+        }
+
+        public IList<Persona> ListaHombres()
+        {
+            return personaRepositorio.ListaHombres();
         }
 
 
+        public IList<Persona> ListaMujeres()
+        {
+            return personaRepositorio.Listamujeres();
+        }
 
 
-
-
-
-
+       
 
     }
-    }
+}
 

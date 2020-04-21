@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using ENTITY;
 
 namespace PulsacionesGUI
 {
@@ -21,6 +23,18 @@ namespace PulsacionesGUI
         {
             RegistrarPersonaFrm registrarpersonafrm = new RegistrarPersonaFrm();
             registrarpersonafrm.Show();
+           
+
+        }
+
+        private void consultarPersonaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarPersonaGui consultarpersonafrm = new ConsultarPersonaGui();
+            consultarpersonafrm.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
         }
     }
