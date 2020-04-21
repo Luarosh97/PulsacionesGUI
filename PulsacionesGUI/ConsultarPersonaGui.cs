@@ -38,10 +38,12 @@ namespace PulsacionesGUI
             {
                 if (TipoConsultaCmb.Text.Equals("Masculino"))
                 {
+                    TotalHombrestxt.Text = personaservice.TotalizarHombres().ToString();
                     DgvTablaPersonas.DataSource = personaservice.ListaHombres();
                 }
                 else
                 {
+                    TotalMujerestxt.Text = personaservice.TotalizarMujeres().ToString();
                     DgvTablaPersonas.DataSource = personaservice.ListaMujeres();
                 }
             }
