@@ -52,25 +52,25 @@
     <Compile Include="ConsultarPersonaGui.Designer.cs">
       <DependentUpon>ConsultarPersonaGui.cs</DependentUpon>
     </Compile>
-    <Compile Include="FRMprincipal.cs">
+    <Compile Include="principalGui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FRMprincipal.Designer.cs">
-      <DependentUpon>FRMprincipal.cs</DependentUpon>
+    <Compile Include="principalGui.Designer.cs">
+      <DependentUpon>principalGui.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrarPersonaFrm.cs">
+    <Compile Include="RegistrarPersonaGui.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrarPersonaFrm.Designer.cs">
-      <DependentUpon>RegistrarPersonaFrm.cs</DependentUpon>
+    <Compile Include="RegistrarPersonaGui.Designer.cs">
+      <DependentUpon>RegistrarPersonaGui.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ConsultarPersonaGui.resx">
       <DependentUpon>ConsultarPersonaGui.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FRMprincipal.resx">
-      <DependentUpon>FRMprincipal.cs</DependentUpon>
+    <EmbeddedResource Include="principalGui.resx">
+      <DependentUpon>principalGui.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,8 +81,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegistrarPersonaFrm.resx">
-      <DependentUpon>RegistrarPersonaFrm.cs</DependentUpon>
+    <EmbeddedResource Include="RegistrarPersonaGui.resx">
+      <DependentUpon>RegistrarPersonaGui.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

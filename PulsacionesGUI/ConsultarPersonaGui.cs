@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
+using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +16,10 @@ namespace PulsacionesGUI
     public partial class ConsultarPersonaGui : Form
     {
         PersonaService personaservice = new PersonaService();
+        RespuestaConsulta respuestaConsulta = new RespuestaConsulta();
+        string TotalPersonas;
+        string TotalHombres;
+        string TotalMujeres;
         public ConsultarPersonaGui()
         {
             InitializeComponent();
@@ -24,30 +28,38 @@ namespace PulsacionesGUI
 
         private void BtnConsulta_Click(object sender, EventArgs e)
         {
-            DgvTablaPersonas.DataSource = null;
-            RespuestaConsulta respuestaConsulta = personaservice.Consultar();
-            if (TipoConsultaCmb.Text.Equals("Todos"))
+            dataGridView1.DataSource = null;
+            respuestaConsulta = personaservice.Consultar();
+            TotalPersonas = personaservice.TotalizarPersonas().ToString();
+            TotalHombres = personaservice.TotalizarHombres().ToString();
+            TotalMujeres = personaservice.TotalizarMujeres().ToString();
+            Consultar();
+        }
+        public void Consultar()
+        {
+            if (TipoConsultaCmb.SelectedIndex == 0)
             {
-                DgvTablaPersonas.DataSource = respuestaConsulta.Personas;
-                personaservice.TotalizarPersonas();
-                Totalinscritostxt.Text = personaservice.TotalizarPersonas().ToString();
-               TotalMujerestxt.Text =personaservice.TotalizarMujeres().ToString();
-               TotalHombrestxt.Text = personaservice.TotalizarHombres().ToString();
+                dataGridView1.DataSource = respuestaConsulta.Personas;
+            }
+            else if (TipoConsultaCmb.SelectedIndex == 1)
+            {
+                dataGridView1.DataSource = personaservice.ListaHombres();
+                TotalMujeres = "0";
+                TotalPersonas = TotalHombres;
             }
             else
             {
-                if (TipoConsultaCmb.Text.Equals("Masculino"))
-                {
-                    TotalHombrestxt.Text = personaservice.TotalizarHombres().ToString();
-                    DgvTablaPersonas.DataSource = personaservice.ListaHombres();
-                }
-                else
-                {
-                    TotalMujerestxt.Text = personaservice.TotalizarMujeres().ToString();
-                    DgvTablaPersonas.DataSource = personaservice.ListaMujeres();
-                }
+                dataGridView1.DataSource = personaservice.ListaMujeres();
+                TotalHombres = "0";
+                TotalPersonas = TotalMujeres;
             }
-
+            LlenarCampos();
+        }
+        public void LlenarCampos()
+        {
+            TotalHombrestxt.Text = TotalHombres;
+            TotalMujerestxt.Text = TotalMujeres;
+            Totalinscritostxt.Text = TotalPersonas;
         }
     }
 }

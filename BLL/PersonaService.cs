@@ -79,12 +79,31 @@ namespace BLL
             }
         }
 
-
-
-        public static Persona Buscar(string identificacion)
+        public RespuestaBusqueda Buscar(string Identificacion)
         {
-
-            return personaRepositorio.Buscar(identificacion);
+            RespuestaBusqueda respuesta = new RespuestaBusqueda();
+            try
+            {
+                respuesta.Error = false;
+                Persona persona = personaRepositorio.Buscar(Identificacion);
+                if (persona == null)
+                {
+                    respuesta.Mensaje = $"La persona con cédula numero {Identificacion} no se encuentra registrada";
+                    respuesta.Persona = null;
+                }
+                else
+                {
+                    respuesta.Persona = persona;
+                    respuesta.Mensaje = "Persona encontrada\n\n";
+                }
+            }
+            catch (Exception E)
+            {
+                respuesta.Mensaje = "Error de lectura o escritura de archivos: " + E.Message;
+                respuesta.Persona = null;
+                respuesta.Error = true;
+            }
+            return respuesta;
         }
 
         public RespuestaConsulta Consultar()
@@ -93,14 +112,16 @@ namespace BLL
             try
             {
                 respuesta.Error = false;
-                respuesta.Personas = personaRepositorio.Consultar();
-                if (respuesta.Personas != null)
+                IList<Persona> Personas = personaRepositorio.Consultar();
+                if (Personas.Count != 0)
                 {
                     respuesta.Mensaje = "Se Consulta la Informacion de personas";
+                    respuesta.Personas = Personas;
                 }
                 else
                 {
                     respuesta.Mensaje = "No existen Datos para Consultar";
+                    respuesta.Personas = null;
                 }
 
             }
@@ -108,6 +129,7 @@ namespace BLL
             {
                 respuesta.Error = true;
                 respuesta.Mensaje = $"Erro en datos: " + e.Message;
+                respuesta.Personas = null;
             }
             return respuesta;
 
@@ -139,9 +161,6 @@ namespace BLL
             return personaRepositorio.Listamujeres();
         }
 
-
-       
-
-    }
+}
 }
 

@@ -36,8 +36,8 @@
             this.TotalMujerestxt = new System.Windows.Forms.TextBox();
             this.TotalHombrestxt = new System.Windows.Forms.TextBox();
             this.BtnConsulta = new System.Windows.Forms.Button();
-            this.DgvTablaPersonas = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTablaPersonas)).BeginInit();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // TipoConsultaCmb
@@ -110,21 +110,23 @@
             this.BtnConsulta.UseVisualStyleBackColor = true;
             this.BtnConsulta.Click += new System.EventHandler(this.BtnConsulta_Click);
             // 
-            // DgvTablaPersonas
+            // dataGridView1
             // 
-            this.DgvTablaPersonas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DgvTablaPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvTablaPersonas.Location = new System.Drawing.Point(107, 91);
-            this.DgvTablaPersonas.Name = "DgvTablaPersonas";
-            this.DgvTablaPersonas.Size = new System.Drawing.Size(542, 191);
-            this.DgvTablaPersonas.TabIndex = 11;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(107, 71);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(523, 223);
+            this.dataGridView1.TabIndex = 11;
             // 
             // ConsultarPersonaGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 378);
-            this.Controls.Add(this.DgvTablaPersonas);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.BtnConsulta);
             this.Controls.Add(this.TotalHombrestxt);
             this.Controls.Add(this.TotalMujerestxt);
@@ -135,7 +137,7 @@
             this.Controls.Add(this.TipoConsultaCmb);
             this.Name = "ConsultarPersonaGui";
             this.Text = "ConsultarPersonaFrm";
-            ((System.ComponentModel.ISupportInitialize)(this.DgvTablaPersonas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,6 +152,6 @@
         private System.Windows.Forms.TextBox TotalMujerestxt;
         private System.Windows.Forms.TextBox TotalHombrestxt;
         private System.Windows.Forms.Button BtnConsulta;
-        private System.Windows.Forms.DataGridView DgvTablaPersonas;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

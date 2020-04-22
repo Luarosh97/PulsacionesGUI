@@ -12,16 +12,16 @@ using ENTITY;
 
 namespace PulsacionesGUI
 {
-    public partial class FRMprincipal : Form
+    public partial class principalGui : Form
     {
-        public FRMprincipal()
+        public principalGui()
         {
             InitializeComponent();
         }
 
         private void registrarPersonaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RegistrarPersonaFrm registrarpersonafrm = new RegistrarPersonaFrm();
+            RegistrarPersonaGui registrarpersonafrm = new RegistrarPersonaGui();
             registrarpersonafrm.Show();
            
 

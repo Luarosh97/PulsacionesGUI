@@ -1,6 +1,6 @@
 ﻿namespace PulsacionesGUI
 {
-    partial class FRMprincipal
+    partial class principalGui
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRMprincipal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(principalGui));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pulsacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarPersonaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();

@@ -16,11 +16,8 @@ namespace DAL
 
         public PersonaRepository(){
             personas = new List<Persona>();
-
-
-
-}
-        public void Guardar(Persona persona) {
+           }
+         public void Guardar(Persona persona) {
             FileStream fileStream = new FileStream(ruta, FileMode.Append);
             StreamWriter stream = new StreamWriter(fileStream);
             stream.WriteLine(persona.ToString());
@@ -38,14 +35,13 @@ namespace DAL
             while ((linea = lector.ReadLine()) != null)
             {
                Persona persona = MapearPersona(linea);
-             personas.Add(persona);
-
+               personas.Add(persona);
             }
             lector.Close();
             fileStream.Close();
             return personas;
 }
-public Persona MapearPersona(string linea)
+        public Persona MapearPersona(string linea)
         {
             Persona persona = new Persona();
             string[] datos = linea.Split(';');
@@ -116,21 +112,21 @@ public Persona MapearPersona(string linea)
 
         public int TotalizarMujeres()
         {
-            return personas.Where(p => p.Sexo.Equals("F")).Count();
+            return personas.Where(p => p.Sexo == "F").Count();
         }
 
         public int TotalizarHombres()
         {
-            return personas.Where(p => p.Sexo.Equals("M")).Count();
+            return personas.Where(p => p.Sexo=="M").Count();
         }
         
         public IList<Persona> ListaHombres()
         {
-            return personas.Where(p => p.Sexo.Equals("M")).ToList() ;
+            return personas.Where(p => p.Sexo=="M").ToList() ;
         }
         public IList<Persona> Listamujeres()
         {
-            return personas.Where(p => p.Sexo.Equals("F")).ToList();
+            return personas.Where(p => p.Sexo == "F").ToList();
         }
 
 

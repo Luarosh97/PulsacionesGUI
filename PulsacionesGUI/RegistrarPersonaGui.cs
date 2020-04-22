@@ -14,10 +14,10 @@ using BLL;
 
 namespace PulsacionesGUI
 {
-    public partial class RegistrarPersonaFrm : Form
+    public partial class RegistrarPersonaGui : Form
     {
         PersonaService personaservice = new PersonaService();
-        public RegistrarPersonaFrm()
+        public RegistrarPersonaGui()
         {
             InitializeComponent();
         }
@@ -58,10 +58,11 @@ namespace PulsacionesGUI
 
             if (identificacion != "")
             {
-                Persona persona = PersonaService.Buscar(identificacion);
+                RespuestaBusqueda respuesta = personaservice.Buscar(identificacion);
 
-                if (persona != null)
+                if (respuesta.Persona != null)
                 {
+                    Persona persona = respuesta.Persona;
                     NombreTxt.Text = persona.Nombre;
                     EdadTxt.Text = persona.Edad.ToString();
                     PulsacionTxt.Text = persona.Pulsacion.ToString();
@@ -86,8 +87,8 @@ namespace PulsacionesGUI
             string identificacion = IdentificacionTxt.Text;
             if (identificacion != "")
             {
-                Persona persona = PersonaService.Buscar(identificacion);
-                if (persona != null)
+                RespuestaBusqueda respuesta = personaservice.Buscar(identificacion);
+                if (respuesta.Persona != null)
                 {
                     identificacion = IdentificacionTxt.Text;
                     var mensaje = personaservice.Eliminar(identificacion);
